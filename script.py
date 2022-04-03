@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields, post_load, ValidationError, validates
+from marshmallow import Schema, fields, post_load, ValidationError, validates, validate
 
 
 class Person:
@@ -18,7 +18,7 @@ class Person:
 
 
 class PersonSchema(Schema):
-    name = fields.String()
+    name = fields.String(validate=validate.Length(max=5, min=3))
 
     # using custom fucntion
     # age = fields.Integer(validate=validate_age)
